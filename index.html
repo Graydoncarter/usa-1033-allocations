@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+  
+  <head>
+    <title>Militarization - 1033 Program</title>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    
+   <!-- Load Leaflet CSS -->
+    <link href="https://unpkg.com/leaflet@1.6.0/dist/leaflet.css" rel="stylesheet">
+    
+   <!-- Load Leaflet and Carto libraries -->
+    <script src="https://unpkg.com/leaflet@1.6.0/dist/leaflet.js"></script>
+    <script src="https://libs.cartocdn.com/carto.js/v4.2.0/carto.min.js"></script>
+  
+   <!-- import the webpage's stylesheet -->
+    <link rel="stylesheet" href="./style.css">
+    
+   <!-- import the webpage's javascript file -->
+    <script src="./script.js" defer></script>
+    
+    <!-- Load Promises polyfill -->
+    <script src="https://cdn.jsdelivr.net/npm/promise-polyfill@8/dist/polyfill.min.js"></script>
+    
+    <!-- Load Fetch polyfill -->
+    <script src="https://cdn.jsdelivr.net/npm/whatwg-fetch@2.0.4/fetch.js"></script>
+  </head>  
+  
+  
+  <body>
+    <h1> U.S.A. - Tactical Militarization of Local Law Enforcement</h1>
+    <h2> Through the DLA's Federal "1033 Program" (1995 - 2015)</h2>
+     <div class="map-wrapper">
+      <div id="map"></div>
+      <div class="sidebar">
+        <!-- We create a div where the feature data will go when clicked on: -->
+        <div class="sidebar-feature-content">
+          <div>By 2015, _______ Counties Averaged _______ in Localized, Tactical Allocations: </br></br>
+          * Western - $<span class="western-average"></span></br>
+          * Southern - $<span class="southern-average"></span></br>  
+          * Mid-Western - $<span class="midwest-average"></span></br>
+          * Northeastern - $<span class="northeast-average"></span></div>
+        </div>
+      </div>
+    </div>
+    
+    <select class="layer-picker">
+      <option value="all">Filter the West by State</option>
+      <option value="Arizona">Arizona</option>
+      <option value="California">California</option>
+      <option value="Colorado">Colorado</option>
+      <option value="Idaho">Idaho</option>
+      <option value="Montana">Montana</option>
+      <option value="Nevada">Nevada</option>
+      <option value="NewMexico">New Mexico</option>
+      <option value="Oregon">Oregon</option>
+      <option value="Utah">Utah</option>
+      <option value="Washington">Washington</option>
+      <option value="Wyoming">Wyoming</option>
+    </select>
+    
+    <select class="layer-picker2">
+      <option value="all">Filter the South by State</option>
+      <option value="Alabama">Alabama</option>
+      <option value="Arkansas">Arkansas</option>
+      <option value="Delaware">Delaware</option>
+      <option value="Florida">Florida</option>
+      <option value="Georgia">Georgia</option>
+      <option value="Kentucky">Kentucky</option>
+      <option value="Louisiana">Louisiana</option>
+      <option value="Maryland">Maryland</option>
+      <option value="Mississippi">Mississippi</option>
+      <option value="Missouri">Missouri</option>
+      <option value="NorthCarolina">North Carolina</option>
+      <option value="Oklahoma">Oklahoma</option>
+      <option value="SouthCarolina">South Carolina</option>
+      <option value="Tennessee">Tennessee</option>
+      <option value="Texas">Texas</option>
+      <option value="Virginia">Virginia</option>
+      <option value="WestVirginia">West Virginia</option>
+    </select>
+    
+    <select class="layer-picker3">
+      <option value="all">Filter the Midwest by State</option>
+      <option value="Illinois">Illinois</option>
+      <option value="Indiana">Indiana</option>
+      <option value="Iowa">Iowa</option>
+      <option value="Kansas">Kansas</option>
+      <option value="Michigan">Michigan</option>
+      <option value="Minnesota">Minnesota</option>
+      <option value="Missouri">Missouri</option>
+      <option value="Nebraska">Nebraska</option>
+      <option value="NorthDakota">North Dakota</option>
+      <option value="Ohio">Ohio</option>
+      <option value="SouthDakota">South Dakota</option>
+      <option value="WestVirginia">West Virginia</option>
+      <option value="Wisconsin">Wisconsin</option>
+    </select>
+    
+    <select class="layer-picker4">
+      <option value="all">Filter the Northeast by State</option>
+      <option value="Connecticut">Connecticut</option>
+      <option value="Maine">Maine</option>
+      <option value="Massachusetts">Massachusetts</option>
+      <option value="NewHampshire">New Hampshire</option>
+      <option value="NewJersey">New Jersey</option>
+      <option value="NewYork">New York</option>
+      <option value="Pennsylvania">Pennsylvania</option>
+      <option value="RhodeIsland">Rhode Island</option>
+      <option value="Vermont">Vermont</option>
+    </select>
+    <button class="resetbutton">
+      Reset
+    </button>
+    
+    <p>
+    </br>Interested in my <a target="_blank" href="https://docs.google.com/document/d/e/2PACX-1vRksC-U1tFMS30nuVrLDMVhSbrXHwTPzbJc5UqfCYC45nvGc9zQoVGtQZ6-Mrmp2gVV8KyyuinI8o9E/pub">methodology</a> or want to <a target="_blank" href="https://www.themarshallproject.org/2014/12/03/the-pentagon-finally-details-its-weapons-for-cops-giveaway">learn more</a>?
+    </p>
+    <p>
+      <a target="_blank" href="https://www.themarshallproject.org/2017/07/21/how-fake-cops-got-1-2-million-in-real-weapons">Why should you care?</a>
+    </p>
+    <p>
+      Feel free to <a target="_blank" href="https://docs.google.com/spreadsheets/d/e/2PACX-1vSDMdphv_N70kRMui_BNEeOQI0La5mZaD8YJ42tpoY3lBBPynPO8XLwlqnBpaMIUg/pubhtml">view</a> or download the project's processed data in <a href="https://docs.google.com/spreadsheets/d/e/2PACX-1vRWbNpHZKP2UejjOyni98GFm1lMfg2JvxuAl9bABsdSH8eiKRSMkiSxGueONbh8VQ/pub?output=csv"> .csv</a> or <a href="https://docs.google.com/spreadsheets/d/e/2PACX-1vT2aocZ7FX_hzGMyCu1pzkSYYDG8-1DUtrKM2u9l6qcvEaXt1hfsCl--wYvXVFboQ/pub?output=xlsx">.xlsx</a> format.
+    </p>
+    <h3>Sources:</h3>
+    <p>
+      <a target="_blank" href="https://www.dla.mil/DispositionServices/Offers/Reutilization/LawEnforcement/PublicInformation/"><img src="https://cdn.glitch.com/39f44b75-a7e3-4abb-bb8b-045e696b43c2%2F220px-Seal_of_the_Defense_Logistics_Agency.png?1582642422599"></a>
+    </p>
+    <p class="sourcetag">
+      Database, Website & Chart Created by Graydon Carter - 2020
+    <br />
+      Special thanks to Spencer Thompson for his Python expertise in 2018
+    <br />
+      Contact: GraydonDCarter@Gmail.com
+    </p>
+      <!-- include the Glitch button to show what the webpage is about and
+          to make it easier for folks to view source and remix -->
+    <div class="glitchButton" style="position:fixed;top:20px;right:20px;"></div>
+    <script src="https://button.glitch.me/button.js"></script>
+  </body>
+
+</html>
+
+
+
